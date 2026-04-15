@@ -1,0 +1,27 @@
+name: group18_analytics
+
+version: 1.0
+config-version: 2
+
+profile: default
+
+analysis-paths: ["analyses"]
+macro-paths: ["macros"]
+model-paths: ["models"]
+seed-paths: ["seeds"]
+snapshot-paths: ["snapshots"]
+test-paths: ["tests"]
+
+target-path: "target"
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  group18_analytics:
+    staging:
+      +materialized: table
+
+    marts:
+      +materialized: table

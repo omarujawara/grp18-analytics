@@ -1,0 +1,209 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Raw data loaded from NYC Open Data
+    database: cis9440-group18
+    schema: group18_raw_data
+    tables:
+      - name: raw_311_illegal_parking
+        description: |
+          NYC 311 service requests for illegal parking complaints.
+          One row per service request.
+        columns:
+          - name: unique_key
+            description: Unique identifier of a Service Request (SR)
+            tests:
+              - unique
+              - not_null
+
+          - name: created_date
+            description: Date the service request was created
+
+          - name: closed_date
+            description: Date the service request was closed
+
+          - name: agency
+            description: Acronym of responding City Government Agency
+
+          - name: agency_name
+            description: Full name of the responding City Government Agency
+
+          - name: complaint_type
+            description: High-level category of the complaint
+
+          - name: descriptor
+            description: Additional detail about the complaint type
+
+          - name: additional_details
+            description: Additional details associated with the descriptor
+
+          - name: location_type
+            description: Type of location used in the address information
+
+          - name: incident_zip
+            description: ZIP code of the incident location
+
+          - name: incident_address
+            description: House number of the incident address
+
+          - name: street_name
+            description: Street name of the incident address
+
+          - name: cross_street_1
+            description: First cross street of the incident location
+
+          - name: cross_street_2
+            description: Second cross street of the incident location
+
+          - name: intersection_street_1
+            description: First intersecting street
+
+          - name: intersection_street_2
+            description: Second intersecting street
+
+          - name: address_type
+            description: Type of address information available
+
+          - name: city
+            description: City of the incident location
+
+          - name: landmark
+            description: Landmark name if applicable
+
+          - name: status
+            description: Status of the service request
+
+          - name: due_date
+            description: Expected resolution date
+
+          - name: resolution_description
+            description: Description of action taken by the agency
+
+          - name: resolution_action_updated
+            description: Date when the resolution was last updated
+
+          - name: community_board
+            description: Community board of the incident location
+
+          - name: council_district
+            description: Council district of the incident location
+
+          - name: bbl
+            description: Borough Block and Lot identifier
+
+          - name: borough
+            description: Borough of the incident
+
+          - name: x_coordinate_state_plane
+            description: X coordinate of the incident location
+
+          - name: y_coordinate_state_plane
+            description: Y coordinate of the incident location
+
+          - name: open_data_channel_type
+            description: Method used to submit the service request
+
+          - name: latitude
+            description: Latitude of the incident location
+
+          - name: longitude
+            description: Longitude of the incident location
+
+          - name: location
+            description: Combined latitude and longitude of the incident location
+
+      - name: raw_mvc_crashes
+        description: |
+          NYC motor vehicle collision data.
+          Each row represents a single collision event.
+        columns:
+          - name: collision_id
+            description: Unique record identifier for each collision
+            tests:
+              - unique
+              - not_null
+
+          - name: crash_date
+            description: Date of the collision
+
+          - name: crash_time
+            description: Time of the collision
+
+          - name: borough
+            description: Borough where the collision occurred
+
+          - name: zip_code
+            description: ZIP code of the collision location
+
+          - name: latitude
+            description: Latitude of the collision location
+
+          - name: longitude
+            description: Longitude of the collision location
+
+          - name: location
+            description: Combined latitude and longitude of the collision
+
+          - name: on_street_name
+            description: Street where the collision occurred
+
+          - name: cross_street_name
+            description: Nearest cross street to the collision
+
+          - name: off_street_name
+            description: Address if the collision occurred off a main street
+
+          - name: number_of_persons_injured
+            description: Number of persons injured
+
+          - name: number_of_persons_killed
+            description: Number of persons killed
+
+          - name: number_of_pedestrians_injured
+            description: Number of pedestrians injured
+
+          - name: number_of_pedestrians_killed
+            description: Number of pedestrians killed
+
+          - name: number_of_cyclist_injured
+            description: Number of cyclists injured
+
+          - name: number_of_cyclist_killed
+            description: Number of cyclists killed
+
+          - name: number_of_motorist_injured
+            description: Number of motorists injured
+
+          - name: number_of_motorist_killed
+            description: Number of motorists killed
+
+          - name: contributing_factor_vehicle_1
+            description: Contributing factor for vehicle 1
+
+          - name: contributing_factor_vehicle_2
+            description: Contributing factor for vehicle 2
+
+          - name: contributing_factor_vehicle_3
+            description: Contributing factor for vehicle 3
+
+          - name: contributing_factor_vehicle_4
+            description: Contributing factor for vehicle 4
+
+          - name: contributing_factor_vehicle_5
+            description: Contributing factor for vehicle 5
+
+          - name: vehicle_type_code1
+            description: Type of vehicle 1 involved in the collision
+
+          - name: vehicle_type_code2
+            description: Type of vehicle 2 involved in the collision
+
+          - name: vehicle_type_code_3
+            description: Type of vehicle 3 involved in the collision
+
+          - name: vehicle_type_code_4
+            description: Type of vehicle 4 involved in the collision
+
+          - name: vehicle_type_code_5
+            description: Type of vehicle 5 involved in the collision
