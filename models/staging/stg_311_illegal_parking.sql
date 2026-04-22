@@ -11,7 +11,7 @@ WITH source AS (
    -- Pull everything from the raw source table first.
    -- Using a short CTE name makes the later code easier to read.
    SELECT * 
-   FROM {{ source('raw', 'source_311_illegal_parking') }}
+   FROM {{ source('raw', 'raw_311_illegal_parking') }}
 
 ), -- Easier to refer to the dbt reference to a long name table this way
 
