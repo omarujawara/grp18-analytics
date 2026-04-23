@@ -22,6 +22,10 @@ models:
   group18_analytics:
     staging:
       +materialized: table
+      +schema: group18_stg_data
 
     marts:
       +materialized: table
+
+      shared: {}
+
