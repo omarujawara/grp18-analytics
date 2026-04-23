@@ -1,0 +1,93 @@
+version: 2
+
+models:
+  - name: stg_311_illegal_parking
+    description: >
+      Cleaned and standardized staging model for 311 Illegal Parking complaint data.
+      This model preserves one row per complaint request and prepares the raw source
+      data for downstream dimensions and fact tables in the mart layer.
+
+    columns:
+      - name: complaint_id
+        description: >
+          Unique identifier for the 311 complaint request, derived from the raw
+          source field unique_key.
+        tests:
+          - not_null
+          - unique
+
+      - name: created_date
+        description: >
+          Timestamp when the complaint was created in the source system.
+        tests:
+          - not_null
+
+      - name: closed_date
+        description: >
+          Timestamp when the complaint was closed in the source system, if applicable.
+
+      - name: agency
+        description: >
+          Agency code associated with the complaint.
+
+      - name: agency_name
+        description: >
+          Full agency name associated with the complaint.
+
+      - name: complaint_type
+        description: >
+          Complaint category from the 311 source. For this model, records should
+          represent Illegal Parking complaints.
+
+      - name: descriptor
+        description: >
+          More detailed complaint description from the 311 source.
+
+      - name: location_type
+        description: >
+          Type of location associated with the complaint, when available.
+
+      - name: status
+        description: >
+          Standardized complaint status value, converted to uppercase and trimmed.
+
+      - name: incident_zip
+        description: >
+          Cleaned ZIP code for the complaint location, stored as a string to preserve
+          formatting and leading zeros.
+
+      - name: borough
+        description: >
+          Standardized borough value for the complaint location.
+
+      - name: incident_address
+        description: >
+          Street address associated with the complaint, when available.
+
+      - name: street_name
+        description: >
+          Street name associated with the complaint location.
+
+      - name: cross_street_1
+        description: >
+          First cross street associated with the complaint location.
+
+      - name: cross_street_2
+        description: >
+          Second cross street associated with the complaint location.
+
+      - name: latitude
+        description: >
+          Latitude of the complaint location.
+
+      - name: longitude
+        description: >
+          Longitude of the complaint location.
+
+      - name: method_of_submission
+        description: >
+          Submission channel for the complaint, renamed from open_data_channel_type.
+
+      - name: _stg_loaded_at
+        description: >
+          Timestamp when this row was processed by the staging model.
