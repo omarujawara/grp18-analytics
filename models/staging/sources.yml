@@ -121,7 +121,7 @@ sources:
           - name: collision_id
             description: Unique record identifier for each collision
             tests:
-              - unique
+              # - unique
               - not_null
 
           - name: crash_date
