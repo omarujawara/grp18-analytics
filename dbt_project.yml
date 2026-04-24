@@ -25,3 +25,12 @@ models:
 
     marts:
       +materialized: table
+
+seeds:
+  group18_analytics:
+    nyc_zip_polygons:
+      +schema: dbt_nhuang
+      +column_types:
+        zip_code: string
+        borough: string
+        geom_wkt: string
