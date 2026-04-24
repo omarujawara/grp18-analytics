@@ -27,5 +27,16 @@ models:
     marts:
       +materialized: table
 
+<<<<<<< HEAD
+seeds:
+  group18_analytics:
+    nyc_zip_polygons:
+      +schema: dbt_nhuang
+      +column_types:
+        zip_code: string
+        borough: string
+        geom_wkt: string
+=======
       shared: {}
 
+>>>>>>> 8815dc8b8333e29ae6df6e96318e9f4c6d6e3d33
