@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: dim_channel
+    description: |
+      Cleaned and standardized staging tables for the NYC motor vehicle collisions dataset. 
+      Each row represents a motor vehicle collision, where 'collision_id' is the unique identifier.
+
+    columns:
+      - name: channel_key
+        description: This is the surrogate key for the 'dim_channel' dimension table
+        tests:
+          - unique
+          - not_null
+
+      - name: open_data_channel_type
+        description: Indicates how the service request was submitted to 311, i.e.by phone, online, mobile, other, or unknown
