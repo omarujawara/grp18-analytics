@@ -32,3 +32,6 @@ Thumbs.db
 # Mac/Linux temp files
 *.swp
 *.swo
+
+# Script files
+*.sh
