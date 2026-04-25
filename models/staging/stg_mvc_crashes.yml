@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stg_mv_collisions  # Must match the .sql filename
+  - name: stg_mvc_crashes  # Must match the .sql filename
     description: |
       Cleaned and standardized staging tables for the NYC motor vehicle collisions dataset. 
       Each row represents a motor vehicle collision, where 'collision_id' is the unique identifier.
