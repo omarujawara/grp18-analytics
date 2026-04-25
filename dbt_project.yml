@@ -26,4 +26,23 @@ models:
 
     marts:
       +materialized: table
-      +schema: group18_stg_data
+
+      shared:
+        +schema: conformed_dimensions
+      
+      illegal_parking_mart:
+        +schema: group_18_illegal_parking_mart
+      
+      mvc_crashes_mart:
+        +schema: group_18_mvc_crashes_mart
+
+seeds:
+  group18_analytics:
+    nyc_zip_polygons:
+      +schema: dbt_nhuang
+      +column_types:
+        zip_code: string
+        borough: string
+        geom_wkt: string
+      shared: {}
+

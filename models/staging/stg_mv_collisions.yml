@@ -1,0 +1,101 @@
+version: 2
+
+models:
+  - name: stg_mv_collisions  # Must match the .sql filename
+    description: |
+      Cleaned and standardized staging tables for the NYC motor vehicle collisions dataset. 
+      Each row represents a motor vehicle collision, where 'collision_id' is the unique identifier.
+
+    columns:
+      - name: collision_id
+        description: "Primary key for this table."
+        tests:
+          - unique
+          - not_null
+      
+      - name: crash_date
+        description: Occurrence date of collision
+
+      - name: crash_time
+        description: Occurrence time of collision
+      
+      - name: borough
+        description: Borough where collision occurred
+      
+      - name: zip_code
+        description: Postal code of incident occurrence
+      
+      - name: latitude
+        description: Latitude coordinate for Global Coordinate System, WGS 1984, decimal degrees (EPSG 4326)
+
+      - name: longitude
+        description: Longitude coordinate for Global Coordinate System, WGS 1984, decimal degrees (EPSG 4326)
+
+      - name: location
+        description: Latitude , Longitude pair
+
+      - name: on_street_name
+        description: Street on which the collision occurred
+
+      - name: off_street_name
+        description: Nearest cross street to the collision
+
+      - name: cross_street_name
+        description: Street address if known
+
+      - name: number_of_persons_injured
+        description: Number of persons injured
+
+      - name: number_of_persons_killed
+        description: Number of persons killed
+
+      - name: number_of_pedestrians_injured
+        description: Number of pedestrians injured
+
+      - name: number_of_pedestrians_killed
+        description: Number of pedestrians killed
+
+      - name: number_of_cyclist_injured
+        description: Number of cyclists injured
+      
+      - name: number_of_cyclist_killed
+        description: Number of cyclists killed
+      
+      - name: number_of_motorist_injured
+        description: Number of vehicle occupants injured
+      
+      - name: number_of_motorist_killed
+        description: Number of vehicle occupants killed
+      
+      - name: contributing_factor_vehicle_1
+        description: Factors contributing to the collision for designated vehicle
+      
+      - name: contributing_factor_vehicle_2
+        description: Factors contributing to the collision for designated vehicle
+      
+      - name: contributing_factor_vehicle_3
+        description: Factors contributing to the collision for designated vehicle
+      
+      - name: contributing_factor_vehicle_4
+        description: Factors contributing to the collision for designated vehicle
+      
+      - name: contributing_factor_vehicle_5
+        description: Factors contributing to the collision for designated vehicle
+      
+      - name: vehicle_type_code1
+        description: Type of vehicle based on the selected vehicle category (ATV, bicycle, car/suv, ebike, escooter, truck/bus, motorcycle, other)
+      
+      - name: vehicle_type_code2
+        description: Type of vehicle based on the selected vehicle category (ATV, bicycle, car/suv, ebike, escooter, truck/bus, motorcycle, other)
+      
+      - name: vehicle_type_code3
+        description: Type of vehicle based on the selected vehicle category (ATV, bicycle, car/suv, ebike, escooter, truck/bus, motorcycle, other)
+      
+      - name: vehicle_type_code4
+        description: Type of vehicle based on the selected vehicle category (ATV, bicycle, car/suv, ebike, escooter, truck/bus, motorcycle, other)
+      
+      - name: vehicle_type_code5
+        description: Type of vehicle based on the selected vehicle category (ATV, bicycle, car/suv, ebike, escooter, truck/bus, motorcycle, other)
+      
+      - name: _stg_loaded_at
+        description: Timestamp when this row was processed by the staging model.
