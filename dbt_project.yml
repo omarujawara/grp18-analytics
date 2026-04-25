@@ -45,4 +45,3 @@ seeds:
         borough: string
         geom_wkt: string
       shared: {}
-
