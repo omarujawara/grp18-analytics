@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: dim_vehicle_type
+    description: >
+      Dimension table for vehicle types derived from staged MVC crash data.
+      Contains one row per distinct vehicle type description.
+
+    columns:
+      - name: vehicle_type_key
+        description: >
+          Surrogate key for the vehicle type dimension.
+        tests:
+          - not_null
+          - unique
+
+      - name: vehicle_type_desc
+        description: >
+          Standardized vehicle type description from the staged MVC crash data.
+        tests:
+          - not_null
+          - unique

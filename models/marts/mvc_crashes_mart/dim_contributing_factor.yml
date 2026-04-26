@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: dim_contributing_factor
+    description: >
+      Dimension table for contributing factors derived from staged MVC crash data.
+      Contains one row per distinct contributing factor description.
+
+    columns:
+      - name: factor_key
+        description: >
+          Surrogate key for the contributing factor dimension.
+        tests:
+          - not_null
+          - unique
+
+      - name: factor_desc
+        description: >
+          Standardized contributing factor description from the staged MVC crash data.
+        tests:
+          - not_null
+          - unique
