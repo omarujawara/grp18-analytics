@@ -8,7 +8,7 @@ models:
 
     columns:
       - name: geo_key
-        description: This is the surrogate key for the 'dim_channel' dimension table
+        description: This is the surrogate key for the 'geo_key' dimension table
         tests:
           - unique
           - not_null
