@@ -19,6 +19,6 @@ models:
       - name: descriptor
         description: This is associated to the Complaint Type, and provides further detail on the incident or condition. Descriptor values are dependent on the Complaint Type, and are not always required in SR. Descriptor may have a corresponding Additional Details (below) or may stand alone.
 
-        - name: location_type
+      - name: location_type
         description: Describes the type of location used in the address information
        

@@ -1,11 +1,11 @@
 WITH all_locations AS (
     SELECT DISTINCT
-    FROM {{ ref('stg_illegal_parking_mart')}}
+    FROM {{ ref('stg_311_illegal_parking')}}
     
     UNION DISTINCT
     
     SELECT DISTINCT
-    FROM {{ ref('stg_mv_collisions_mart')}}
+    FROM {{ ref('stg_mvc_crashes')}}
     ),
 
     geography_bucket AS (
