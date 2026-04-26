@@ -22,6 +22,8 @@ cleaned AS (
 
 ),
 
+
+
 final AS (
 
     SELECT

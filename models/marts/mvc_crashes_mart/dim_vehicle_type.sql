@@ -1,6 +1,6 @@
 -- Create a vehicle type dimension from staged MVC collision data
 -- Grain: one row per distinct vehicle type value
---
+
 -- Purpose of this model:
 -- 1. Standardize vehicle type values from the MVC staging model
 -- 2. Create a reusable vehicle type dimension for crash analysis
