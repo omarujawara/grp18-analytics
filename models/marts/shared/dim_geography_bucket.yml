@@ -16,5 +16,5 @@ models:
       - name: zip_code
         description: Zip code data taken from 311 Illegal Parking data.
 
-         - name: borough
+      - name: borough
         description: Provided by the submitter and confirmed by geo validation.
