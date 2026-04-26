@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: dim_geography_bucket
+    description: |
+      Cleaned and standardized staging tables for the NYC motor vehicle collisions dataset. 
+      Each row represents a motor vehicle collision, where 'collision_id' is the unique identifier.
+
+    columns:
+      - name: geo_key
+        description: This is the surrogate key for the 'dim_channel' dimension table
+        tests:
+          - unique
+          - not_null
+
+      - name: zip_code
+        description: Zip code data taken from 311 Illegal Parking data.
+
+         - name: borough
+        description: Provided by the submitter and confirmed by geo validation.
