@@ -1,0 +1,59 @@
+version: 2
+
+models:
+  - name: dim_date
+    description: >
+      Date dimension table built from distinct dates found in NYC 311 illegal parking
+      and motor vehicle collision source tables. Provides calendar attributes,
+      weekend indicators, and US federal holiday flags.
+
+    columns:
+      - name: date_key
+        data_type: string
+        description: Surrogate key generated from full_date.
+        tests:
+          - not_null
+          - unique
+
+      - name: full_date
+        data_type: date
+        description: Calendar date at day grain.
+        tests:
+          - not_null
+          - unique
+
+      - name: year
+        data_type: int64
+        description: Four-digit calendar year.
+
+      - name: month
+        data_type: int64
+        description: Numeric month of year (1-12).
+
+      - name: month_name
+        data_type: string
+        description: Full month name (January, February, etc.).
+
+      - name: day_of_month
+        data_type: int64
+        description: Day number within month (1-31).
+
+      - name: day_of_week
+        data_type: int64
+        description: >
+          Day of week number using BigQuery convention:
+          1 = Sunday, 2 = Monday, ... 7 = Saturday.
+
+      - name: day_name
+        data_type: string
+        description: Full weekday name (Sunday, Monday, etc.).
+
+      - name: is_weekend
+        data_type: boolean
+        description: True when full_date falls on Saturday or Sunday.
+
+      - name: is_holiday
+        data_type: boolean
+        description: >
+          True when full_date is a recognized US federal holiday
+          based on implemented business rules.
