@@ -9,11 +9,14 @@ WITH complaint AS (
 final_complaint_dim AS (
     SELECT
         {{ dbt_utils.generate_surrogate_key([
-                'complaint_type',
-                'descriptor',
-                'location_type'
+            'complaint_type',
+            'descriptor',
+            'location_type'
         ]) }} AS complaint_key,
-    FROM ccomplaint 
+        complaint_type,
+        descriptor,
+        location_type
+    FROM complaint 
 )
 
 SELECT * FROM final_complaint_dim 
