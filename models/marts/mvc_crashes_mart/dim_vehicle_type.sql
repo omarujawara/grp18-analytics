@@ -9,7 +9,7 @@
 WITH source AS (
 
     SELECT *
-    FROM {{ ref('stg_mv_crashes') }}
+    FROM {{ ref('stg_mvc_crashes') }}
 
 ), 
 
