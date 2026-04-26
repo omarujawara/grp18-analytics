@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: dim_status
+    description: Status dimension from 311 illegal parking requests.
+
+    columns:
+      - name: status_key
+        data_type: string
+        tests:
+          - not_null
+          - unique
+
+      - name: status
+        data_type: string
+        tests:
+          - not_null
+          - unique

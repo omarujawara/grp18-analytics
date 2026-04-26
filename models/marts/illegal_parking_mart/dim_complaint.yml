@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: dim_complaint
+    description: |
+      Cleaned and standardized staging tables for the NYC motor vehicle collisions dataset. 
+      Each row represents a motor vehicle collision, where 'collision_id' is the unique identifier.
+
+    columns:
+      - name: complaint_key
+        description: This is the surrogate key for the 'dim_agency' dimension table
+        tests:
+          - unique
+          - not_null
+
+      - name: complaint_type
+        description: This is the first level of a hierarchy identifying the topic of the incident or condition. Complaint Type may have a corresponding Descriptor (below) or may stand alone.
+
+      - name: descriptor
+        description: This is associated to the Complaint Type, and provides further detail on the incident or condition. Descriptor values are dependent on the Complaint Type, and are not always required in SR. Descriptor may have a corresponding Additional Details (below) or may stand alone.
+
+      - name: location_type
+        description: Describes the type of location used in the address information
+       
