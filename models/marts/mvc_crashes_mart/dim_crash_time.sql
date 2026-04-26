@@ -17,7 +17,9 @@ WITH source AS (
 cleaned AS (
 
     SELECT DISTINCT
-        SAFE_CAST(crash_time AS TIME) AS crash_time
+        -- Derive the time-of-day directly from crash_date
+        -- This is more reliable than parsing the crash_time string
+        TIME(crash_date) AS crash_time
     FROM source
     WHERE crash_time IS NOT NULL
 
