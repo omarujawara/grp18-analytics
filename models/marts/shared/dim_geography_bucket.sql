@@ -1,5 +1,4 @@
 WITH all_locations AS (
-<<<<<<< HEAD
     SELECT DISTINCT 
         borough as borough,
         incident_zip as zip_code
@@ -14,16 +13,6 @@ WITH all_locations AS (
     FROM {{ ref('stg_mvc_crashes') }}
     WHERE zip_code IS NOT NULL
 ),
-=======
-    SELECT DISTINCT
-    FROM {{ ref('stg_311_illegal_parking')}}
-    
-    UNION DISTINCT
-    
-    SELECT DISTINCT
-    FROM {{ ref('stg_mvc_crashes')}}
-    ),
->>>>>>> e95c1b3df1bae044d522d388876877200dbbeea6
 
 geography_bucket AS (
     SELECT
