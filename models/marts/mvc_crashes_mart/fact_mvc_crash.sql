@@ -53,6 +53,7 @@
             ct.crash_time_key,
             cf.factor_key,
             vt.vehicle_type_key,
+            1 as crash_count,
             r.number_of_persons_injured,
             r.number_of_persons_killed
 
