@@ -1,14 +1,15 @@
 WITH channel AS (
     SELECT DISTINCT
-        open_data_channel_type AS open data channel type 
+        method_of_submission AS method_of_submission 
     FROM {{ ref('stg_311_illegal_parking')}}
 ),
 
 final_channel_dim AS (
     SELECT
         {{ dbt_utils.generate_surrogate_key([
-                'open_data_channel_type'
+            'method_of_submission'
         ]) }} AS channel_key,
+        method_of_submission
     FROM channel 
 )
 

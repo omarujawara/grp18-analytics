@@ -28,7 +28,7 @@ models:
       +materialized: table
 
       shared:
-        +schema: conformed_dimensions
+        +schema: group_18_conformed_dimensions
       
       illegal_parking_mart:
         +schema: group_18_illegal_parking_mart
