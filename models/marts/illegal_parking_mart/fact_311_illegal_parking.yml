@@ -1,0 +1,89 @@
+version: 2
+
+models:
+  - name: fact_illegal_parking
+    description: >
+      Fact table capturing illegal parking complaints from NYC 311 data.
+      Grain: one row per complaint (complaint_id).
+
+    columns:
+
+
+      # PRIMARY KEY
+      - name: fact_illegal_parking_key
+        description: Surrogate primary key for the fact table
+        tests:
+          - not_null
+          - unique
+
+      
+      # NATURAL KEY
+      - name: complaint_id
+        description: Unique identifier for each 311 complaint
+        tests:
+          - not_null
+
+
+
+      # FOREIGN KEYS
+  
+      - name: date_key
+        description: Foreign key to dim_date
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+
+      - name: geo_key
+        description: Foreign key to dim_geography_bucket
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_geography_bucket')
+                field: geo_key
+
+      - name: complaint_key
+        description: Foreign key to dim_complaint
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_complaint')
+                field: complaint_key
+
+      - name: agency_key
+        description: Foreign key to dim_agency
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_agency')
+                field: agency_key
+
+      - name: channel_key
+        description: Foreign key to dim_channel
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_channel')
+                field: channel_key
+
+      - name: status_key
+        description: Foreign key to dim_status
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_status')
+                field: status_key
+
+      # MEASURE
+
+      - name: complaint_count
+        description: >
+          Measure representing one complaint per row (always = 1).
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1]
