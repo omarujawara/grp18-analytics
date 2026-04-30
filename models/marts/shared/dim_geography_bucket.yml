@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: dim_geography_bucket
+    description: |
+      Cleaned and standardized conformed table for the NYC motor vehicle collisions and 311 illegal parking complaint dataset. 
+      Each row represents a location (borought and zip)
+
+    columns:
+      - name: geo_key
+        description: This is the surrogate key for the 'geo_key' dimension table
+        tests:
+          - unique
+          - not_null
+
+      - name: zip_code
+        description: Zip code data taken from 311 Illegal Parking data.
+
+      - name: borough
+        description: Provided by the submitter and confirmed by geo validation.
