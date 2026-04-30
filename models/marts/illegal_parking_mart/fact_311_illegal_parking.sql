@@ -65,8 +65,12 @@ final AS (
 
     -- Geography
     LEFT JOIN dim_geography g
-        ON c.incident_zip = g.zip_code
-        AND c.borough = g.borough
+        ON COALESCE(c.incident_zip, 'UNKNOWN') = g.zip_code
+        AND CASE 
+                WHEN c.borough = 'UNKNOWN or CITYWIDE' THEN 'UNKNOWN'
+                ELSE c.borough
+            END = g.borough
+
 
     -- Complaint
     LEFT JOIN dim_complaint dc
