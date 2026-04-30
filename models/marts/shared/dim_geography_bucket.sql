@@ -1,22 +1,41 @@
 WITH all_locations AS (
+
+    -- From 311 staging
     SELECT DISTINCT 
-        borough as borough,
-        incident_zip as zip_code
+        CASE 
+            WHEN borough = 'UNKNOWN or CITYWIDE' THEN 'UNKNOWN'
+            ELSE borough
+        END AS borough,
+
+        CASE 
+            WHEN incident_zip IS NULL THEN 'UNKNOWN'
+            ELSE incident_zip
+        END AS zip_code
+
     FROM {{ ref('stg_311_illegal_parking') }}
-    WHERE incident_zip IS NOT NULL
-    
+
     UNION DISTINCT
     
+    -- From MVC crashes staging
     SELECT DISTINCT 
-        borough as borough,
-        zip_code as zip_code
+        CASE 
+            WHEN borough IS NULL THEN 'UNKNOWN'
+            WHEN borough = 'UNKNOWN or CITYWIDE' THEN 'UNKNOWN'
+            ELSE borough
+        END AS borough,
+
+        CASE 
+            WHEN zip_code IS NULL THEN 'UNKNOWN'
+            ELSE zip_code
+        END AS zip_code
+
     FROM {{ ref('stg_mvc_crashes') }}
-    WHERE zip_code IS NOT NULL
+
 ),
 
 geography_bucket AS (
     SELECT
-    {{ dbt_utils.generate_surrogate_key(['borough', 'zip_code'])}} AS geo_key,
+        {{ dbt_utils.generate_surrogate_key(['borough', 'zip_code']) }} AS geo_key,
         borough,
         zip_code
     FROM all_locations
