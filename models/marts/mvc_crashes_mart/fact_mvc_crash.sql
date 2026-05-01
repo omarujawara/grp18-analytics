@@ -63,17 +63,20 @@
             ON CAST(r.crash_date AS DATE) = d.full_date
 
         LEFT JOIN dim_geography_bucket ge
-            ON r.borough = ge.borough
-            AND r.zip_code = ge.zip_code
+            ON CASE 
+                WHEN r.borough = 'UNKNOWN or CITYWIDE' THEN 'UNKNOWN'
+                ELSE r.borough
+            END = ge.borough
+            AND COALESCE(r.zip_code, 'UNKNOWN') = ge.zip_code
         
         LEFT JOIN dim_crash_time ct
             ON CAST(EXTRACT(HOUR FROM r.crash_date) AS INT) = ct.hour
 
         LEFT JOIN dim_contributing_factor cf
-            ON TRIM(CAST(r.contributing_factor_vehicle_1 AS STRING)) = TRIM(CAST(cf.factor_desc AS STRING)) 
+            ON COALESCE(TRIM(CAST(r.contributing_factor_vehicle_1 AS STRING)), "Unspecified") = TRIM(CAST(cf.factor_desc AS STRING))
         
         LEFT JOIN dim_vehicle_type vt
-            ON TRIM(CAST(r.vehicle_type_code1 AS STRING)) = TRIM(CAST(vt.vehicle_type_desc AS STRING))
+            ON COALESCE(TRIM(CAST(r.vehicle_type_code1 AS STRING)), "UNKNOWN") = TRIM(CAST(vt.vehicle_type_desc AS STRING))
     )
 
     SELECT * FROM final
